@@ -445,10 +445,8 @@
   }
 
   /* ---------- events ---------- */
-  addEventListener('scroll', ()=>{
-    requestAnimationFrame(frame);
-    poke();
-  }, {passive:true});
+  addEventListener('scroll', ()=>{ frame(); poke(); }, {passive:true});
+  setInterval(frame, 300);   // 后台标签页 rAF 会被节流，用定时兜底
   addEventListener('mousemove', e=>{
     const f = $('#face');
     if(!f) return;
